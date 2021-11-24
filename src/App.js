@@ -19,6 +19,8 @@ import InvoicePayments from "./views/invoices/InvoicesPayments";
 import PaymentSuccess from "./components/invoices/PaymentSuccess";
 import PaymentCancel from "./components/invoices/PaymentCancel";
 
+console.log("variables de entorno =", process.env);
+
 const App = () => {
   const { isAuthenticated, checkAuthenticated, currentUser } =
     useContext(AuthContext);
