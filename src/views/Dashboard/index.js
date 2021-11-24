@@ -6,7 +6,7 @@ import DashboardSection from "../../components/layout/HeroSection";
 import ContactSection from "../../components/layout/ContactSection";
 import Footer from "../../components/layout/Footer";
 const Dashboard = () => {
-  const { checkAuthenticated, currentUser } = useContext(AuthContext);
+  const { checkAuthenticated } = useContext(AuthContext);
   useEffect(() => {
     checkAuthenticated();
     // eslint-disable-next-line react-hooks/exhaustive-deps
