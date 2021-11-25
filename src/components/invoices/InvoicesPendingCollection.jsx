@@ -112,8 +112,10 @@ const InvoicesPendingCollection = () => {
                 <tr key={invoice.invoice_id}>
                   <td data-col-title="Numero"> {i + 1} </td>
                   <td data-col-title="Factura"> {invoice.invoice_id} </td>
-                  <td data-col-title="Fecha"> DD-MM-AAA </td>
-                  <td data-col-title="Fecha"> Descripción </td>
+                  <td data-col-title="Fecha"> {invoice.due_date} </td>
+                  <td data-col-title="Descripcion">
+                    {invoice.invoice_description}
+                  </td>
                   <td data-col-title="Monto US$">
                     {FormatDecimal(invoice.invoice_amount)}
                   </td>

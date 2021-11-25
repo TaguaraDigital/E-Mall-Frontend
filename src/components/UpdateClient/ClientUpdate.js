@@ -127,7 +127,7 @@ const ClientUpdate = () => {
                   <ErrorMessage
                     name="client_date_birth"
                     component={() => (
-                      <div className="error">{errors.client_birth}</div>
+                      <div className="error">{errors.client_date_birth}</div>
                     )}
                   />
                 </FormField>
