@@ -68,8 +68,6 @@ const CheckoutForm = ({ invoicesToPay, setIsError, setErrorMsg }) => {
 };
 
 const Payments = () => {
-  const navigate = useNavigate();
-
   const { invoices, currentUser } = useContext(AuthContext);
   const [isError, setIsError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
