@@ -2,8 +2,18 @@ const InvoicesFinder = {};
 // const URL = "http://localhost:3500/invoices/";
 const URL = "https://e-mall-backend.vercel.app/invoices/";
 
+// find all invoice for a particular user
+InvoicesFinder.all = async (user) => {
+  const response = await fetch(URL + "all", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", token: localStorage.token },
+    body: JSON.stringify({ client_code: user }),
+  });
+  return await response.json();
+};
+
+// find all pendig invoice for a particular user
 InvoicesFinder.pending = async (user) => {
-  //  const response = await fetch(URL + "pending", {
   const response = await fetch(URL, {
     method: "POST",
     headers: { "Content-Type": "application/json", token: localStorage.token },
@@ -12,11 +22,22 @@ InvoicesFinder.pending = async (user) => {
   return await response.json();
 };
 
+// change invoice status with stripe method
 InvoicesFinder.payments = async (paymentMethod, invoices) => {
   const response = await fetch(URL + "payment", {
     method: "PUT",
     headers: { "Content-Type": "application/json", token: localStorage.token },
     body: JSON.stringify({ paymentMethod, invoices }),
+  });
+  return await response.json();
+};
+
+// change invoice status with tranfer y/o deposit method
+InvoicesFinder.transfer = async (invoices, reference) => {
+  const response = await fetch(URL + "payment/transfer", {
+    method: "PUT",
+    headers: { "Content-Type": "application/json", token: localStorage.token },
+    body: JSON.stringify({ invoices, reference }),
   });
   return await response.json();
 };
@@ -70,15 +91,6 @@ InvoicesFinder.allById = async (user) => {
     method: "POST",
     headers: { "Content-Type": "application/json", token: localStorage.token },
     body: JSON.stringify({ ...user }),
-  });
-  return await response.json();
-};
-
-InvoicesFinder.all = async (user) => {
-  const response = await fetch(URL + "all", {
-    method: "POST",
-    headers: { "Content-Type": "application/json", token: localStorage.token },
-    body: JSON.stringify({ client_code: user }),
   });
   return await response.json();
 };

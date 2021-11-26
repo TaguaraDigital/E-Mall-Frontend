@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const PayMethodContainer = styled.section`
   background-color: #f3f6fa;
-  width: 70%;
+  width: 100%;
+  max-width: 600px;
   margin: 2rem auto;
   padding: 2rem;
   display: flex;
@@ -14,15 +15,26 @@ export const PayMethodContainer = styled.section`
 export const PayMethodSummary = styled.div`
   display: flex;
   width: 100%;
-  max-width: 450px;
   flex-direction: column;
 
   div {
+    span {
+      width: 100%;
+      margin-right: 1rem;
+      text-align: end;
+    }
+
+    .first-column {
+      text-align: start;
+    }
+
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 1.5rem;
-    &:last-child {
+
+    &:last-child,
+    &:first-child {
       font-weight: bold;
     }
   }

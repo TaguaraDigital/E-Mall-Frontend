@@ -7,15 +7,17 @@ import {
   useStripe,
   useElements,
 } from "@stripe/react-stripe-js";
+
+import { FormatDecimal } from "../../services/utils/formats";
+
 import InvoicesFinder from "../../services/apis/InvoicesFinder";
 import { AuthContext } from "../../hooks/contexts/AuthContext";
 import Header from "../../components/layout/Header";
 import ContactSection from "../../components/layout/ContactSection";
 import Footer from "../../components/layout/Footer";
+import DepositPayment from "../../components/DepositPayment";
 
-const stripePromise = loadStripe(
-  "pk_test_51IH9hULbPZwPVRy0NM7zPUokRw3cGYLK3c15uSAkK21EIUxGCw7N9rCvDlFIpfgBun50VbzuB4Qr52Pe7UdJmMTs00mmWHZ3W0"
-);
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_CLIENT_ID);
 
 const CheckoutForm = ({ invoicesToPay, setIsError, setErrorMsg }) => {
   const navigate = useNavigate();
@@ -66,6 +68,8 @@ const CheckoutForm = ({ invoicesToPay, setIsError, setErrorMsg }) => {
 };
 
 const Payments = () => {
+  const navigate = useNavigate();
+
   const { invoices, currentUser } = useContext(AuthContext);
   const [isError, setIsError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
@@ -78,23 +82,32 @@ const Payments = () => {
     <>
       <Header page="home" />
       <div className="pago-container">
-        <div className="tarjeta">
-          <h1>{currentUser.email}</h1>
-          <h2>Monto a Pagar {currentUser.payment_amount}</h2>
-          {isError ? (
-            <h3>{errorMsg}</h3>
-          ) : (
-            <h3>Intorduzca los datos para cancelar</h3>
-          )}
-          <Elements stripe={stripePromise}>
-            <CheckoutForm
+        {currentUser.paymentMethod === "transfer" ? (
+          <>
+            <DepositPayment
               invoicesToPay={invoicesToPay}
-              setIsError={setIsError}
-              setErrorMsg={setErrorMsg}
+              amount={currentUser.payment_amount_USD}
             />
-          </Elements>
-        </div>
+          </>
+        ) : (
+          <div className="tarjeta">
+            <p>Monto a Pagar {FormatDecimal(currentUser.payment_amount)}</p>
+            {isError ? (
+              <h3>{errorMsg}</h3>
+            ) : (
+              <p> Favor introducir los datos para cancelar</p>
+            )}
+            <Elements stripe={stripePromise}>
+              <CheckoutForm
+                invoicesToPay={invoicesToPay}
+                setIsError={setIsError}
+                setErrorMsg={setErrorMsg}
+              />
+            </Elements>
+          </div>
+        )}
       </div>
+
       <ContactSection />
       <Footer />
     </>

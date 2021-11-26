@@ -71,7 +71,9 @@ const InvoicesAll = () => {
                   <td data-col-title="Numero"> {i + 1} </td>
                   <td data-col-title="Factura"> {invoice.invoice_id} </td>
                   <td data-col-title="Fecha">{FormatDate(invoice.due_date)}</td>
-                  <td data-col-title="DEscripcion"> Descripcion </td>
+                  <td data-col-title="Descripcion">
+                    {invoice.invoice_description}
+                  </td>
                   <td data-col-title="Monto USD">
                     {FormatDecimal(invoice.invoice_amount)}
                   </td>
@@ -80,10 +82,12 @@ const InvoicesAll = () => {
                   </td>
                   {invoice.invoice_status === 2 ? (
                     <td data-col-title="Status"> Cancelado </td>
+                  ) : invoice.invoice_status === 1 ? (
+                    <td data-col-title="Status">{invoice.payment_reference}</td>
                   ) : (
                     <td data-col-title="Status"> Pendiente </td>
                   )}
-                  {invoice.invoice_status === 2 ? (
+                  {invoice.invoice_status !== 0 ? (
                     <td data-col-title="Fecha Pago">
                       {FormatDate(invoice.payment_date)}
                     </td>

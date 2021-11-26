@@ -81,7 +81,7 @@ export const GlobalStyle = createGlobalStyle`
 
   input {
     display: block;
-    height: 45px;
+    height: 40px;
     width: 100%;
     margin: 15px 0;
     border: none;
@@ -92,10 +92,10 @@ export const GlobalStyle = createGlobalStyle`
 
 
   input[type=checkbox] {
-    height: 25px;
+    height: 20px;
     width: 100%;
-    padding: 5px;
-    font-size: 40px;
+    padding: 2px;
+    font-size: 1.2rem;
     box-shadow: none;
   }
 
@@ -104,10 +104,14 @@ export const GlobalStyle = createGlobalStyle`
     border-collapse: collapse;
     width: 100%;
     margin: 10px auto 0;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: #4a788b;
     border-radius: 10px;
     margin-bottom: 5rem;
+  }
+
+  caption {
+    font-size: 2rem;
   }
 
   table thead {

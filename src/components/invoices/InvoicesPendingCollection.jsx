@@ -2,7 +2,18 @@ import { useEffect, useContext, useState } from "react";
 import { AuthContext } from "../../hooks/contexts/AuthContext";
 import InvoicesFinder from "../../services/apis/InvoicesFinder";
 import InvoicesPayMethod from "./InvoicesPayMethod";
-import { FormatDecimal } from "../../services/utils/formats";
+import { FormatDecimal, FormatDate } from "../../services/utils/formats";
+import styled from "styled-components";
+
+const ExchangeRate = styled.p`
+  padding: 0 5rem;
+  text-align: right;
+  font-size: 1.3rem;
+  span {
+    font-weight: bold;
+    color: var(--saintOrange);
+  }
+`;
 
 const InvoicesPendingCollection = () => {
   const { currentUser, checkAuthenticated, invoices, setInvoices } =
@@ -88,9 +99,9 @@ const InvoicesPendingCollection = () => {
 
   return (
     <div className="list-group">
-      <p>
-        Tasa de Cambio: <span>{FormatDecimal(exchangeRate)} Bs./US$</span>
-      </p>
+      <ExchangeRate className="exchange-rate">
+        Tasa de Cambio: <span>{FormatDecimal(exchangeRate)}</span> Bs./US$
+      </ExchangeRate>
       <table className="smart-table">
         <caption>Recibos Pendientes</caption>
         <thead>
@@ -112,7 +123,7 @@ const InvoicesPendingCollection = () => {
                 <tr key={invoice.invoice_id}>
                   <td data-col-title="Numero"> {i + 1} </td>
                   <td data-col-title="Factura"> {invoice.invoice_id} </td>
-                  <td data-col-title="Fecha"> {invoice.due_date} </td>
+                  <td data-col-title="Fecha">{FormatDate(invoice.due_date)}</td>
                   <td data-col-title="Descripcion">
                     {invoice.invoice_description}
                   </td>
@@ -156,7 +167,14 @@ const InvoicesPendingCollection = () => {
           </tr>
         </tfoot>
       </table>
-      {amountToPay > 0 ? <InvoicesPayMethod amountToPay={amountToPay} /> : ""}
+      {amountToPay > 0 ? (
+        <InvoicesPayMethod
+          amountToPay={amountToPay}
+          exchangeRate={exchangeRate}
+        />
+      ) : (
+        ""
+      )}
     </div>
   );
 };

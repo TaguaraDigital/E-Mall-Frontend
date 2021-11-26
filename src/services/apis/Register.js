@@ -1,6 +1,6 @@
 const RegisterFinder = {};
-// const URL = "http://localhost:3500/auth/";
-const URL = "https://e-mall-backend.vercel.app/auth/";
+const URL = "http://localhost:3500/auth/";
+// const URL = "https://e-mall-backend.vercel.app/auth/";
 
 RegisterFinder.signup = async (user) => {
   const response = await fetch(URL + "register", {
