@@ -13,6 +13,7 @@ import { COLUMNS as E_Mall_Columns } from "./tableData/e_mall_columns";
 import GlobalFilter from "./GlobalFilter";
 import ColumnFilter from "./ColumnFilter";
 import { Checkbox } from "./Checkbox";
+import { Container } from "./Client.Style";
 
 const RowSelection = () => {
   const columns = useMemo(() => E_Mall_Columns, []);
@@ -35,7 +36,6 @@ const RowSelection = () => {
     canPreviousPage,
     pageOptions,
     prepareRow,
-    selectedFlatRows,
     gotoPage,
     pageCount,
     setPageSize,
@@ -72,7 +72,7 @@ const RowSelection = () => {
   const { globalFilter, pageIndex, pageSize } = state;
 
   return (
-    <>
+    <Container>
       <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
 
       {/* Tabla de clientes */}
@@ -119,6 +119,7 @@ const RowSelection = () => {
             </option>
           ))}
         </select>
+
         <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
           {"<<"}
         </button>
@@ -127,25 +128,28 @@ const RowSelection = () => {
           Anterior
         </button>
 
-        <span>
-          Page <b>{pageIndex + 1}</b> of {pageOptions.length}
-        </span>
+        <p className="goto">
+          <span>
+            Page <b>{pageIndex + 1}</b> of {pageOptions.length}
+          </span>
 
-        <span>
-          | go to Page:{" "}
-          <input
-            type="number"
-            min={0}
-            max={pageCount}
-            defaultValue={pageIndex + 1}
-            onChange={(e) => {
-              const pageNumber = e.target.value
-                ? Number(e.target.value) - 1
-                : 0;
-              gotoPage(pageNumber);
-            }}
-          />
-        </span>
+          <span>
+            {" "}
+            | go to Page:{" "}
+            <input
+              type="number"
+              min={0}
+              max={pageCount}
+              defaultValue={pageIndex + 1}
+              onChange={(e) => {
+                const pageNumber = e.target.value
+                  ? Number(e.target.value) - 1
+                  : 0;
+                gotoPage(pageNumber);
+              }}
+            />
+          </span>
+        </p>
 
         <button onClick={() => nextPage()} disabled={!canNextPage}>
           Siguiente
@@ -157,7 +161,7 @@ const RowSelection = () => {
       </div>
 
       {/* Las filas seleccionadas */}
-      <pre>
+      {/* <pre>
         <code>
           {JSON.stringify(
             {
@@ -167,8 +171,8 @@ const RowSelection = () => {
             2
           )}
         </code>
-      </pre>
-    </>
+      </pre> */}
+    </Container>
   );
 };
 

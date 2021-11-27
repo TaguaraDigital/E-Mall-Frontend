@@ -1,5 +1,101 @@
 import styled from "styled-components";
 
+export const Container = styled.section`
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  table td,
+  table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  table tr:hover {
+    background-color: rgb(255, 105, 0, 0.3);
+  }
+
+  table th,
+  tfoot td {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    text-align: center;
+    background-color: var(--saintOrange);
+    color: white;
+  }
+
+  .search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    font-size: 1.2rem;
+
+    input {
+      margin-left: 1rem;
+      height: 2rem;
+    }
+  }
+
+  input[type="checkbox"] {
+    height: 20px;
+    width: 20px;
+    padding: 2px;
+    font-size: 1.2rem;
+    box-shadow: none;
+  }
+
+  .flex__center {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    & > * {
+      margin-right: 1rem;
+    }
+
+    .goto {
+      width: 350px;
+
+      input {
+        width: 50px;
+        display: inline;
+        height: 2rem;
+        box-shadow: none;
+        outline: none;
+      }
+    }
+
+    select {
+      height: 2rem;
+    }
+  }
+
+  button {
+    margin: 0;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    display: block;
+    &:hover {
+      background-color: var(--ctaClr);
+    }
+  }
+`;
+
 export const ContainerForm = styled.div`
   width: 90%;
   margin: 3rem auto 0;

@@ -10,7 +10,7 @@ const GlobalFilter = ({ filter, setFilter }) => {
 
   return (
     <div className="search">
-      Search :{" "}
+      Search:
       <input
         value={value || ""}
         onChange={(e) => {

@@ -2,6 +2,15 @@ const InvoicesFinder = {};
 // const URL = "http://localhost:3500/invoices/";
 const URL = "https://e-mall-backend.vercel.app/invoices/";
 
+// find all invoice to confirm invoice_status = 1
+InvoicesFinder.toConfirm = async () => {
+  const response = await fetch(URL, {
+    method: "GET",
+    headers: { "Content-Type": "application/json", token: localStorage.token },
+  });
+  return await response.json();
+};
+
 // find all invoice for a particular user
 InvoicesFinder.all = async (user) => {
   const response = await fetch(URL + "all", {

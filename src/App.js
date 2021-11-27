@@ -14,6 +14,7 @@ import InvoicePending from "./views/invoices/InvoicesPending";
 import InvoiceBalance from "./views/invoices/InvoicesBalance";
 import InvoiceAdmin from "./views/invoices/InvoiceAdmin";
 import Client from "./views/Clients/";
+import ClientAdmin from "./views/Clients/ClientAdmin";
 import Dashboard from "./views/Dashboard";
 import InvoicePayments from "./views/invoices/InvoicesPayments";
 import PaymentSuccess from "./components/invoices/PaymentSuccess";
@@ -109,6 +110,18 @@ const App = () => {
           }
         />
 
+        <Route
+          path="/updatecliente"
+          element={
+            !isAuthenticated ? (
+              <Landing />
+            ) : currentUser.user_role === "AD" ? (
+              <ClientAdmin />
+            ) : (
+              <Client />
+            )
+          }
+        />
         <Route
           path="/payment"
           element={!isAuthenticated ? <Landing /> : <InvoicePayments />}

@@ -15,14 +15,6 @@ const InvoicesPayMethod = ({ amountToPay, exchangeRate }) => {
   const navigate = useNavigate();
   const { setCurrentUser } = useContext(AuthContext);
 
-  const handlePagarStripe = () => {
-    // e.preventDefault();
-    setCurrentUser((user) => {
-      return { ...user, payment_amount: totalToPay };
-    });
-    navigate("/payment"); // Go to <InvoicePayments /> from "./views/invoices/InvoicesPayments"
-  };
-
   const handlePagarPayPal = async () => {
     // e.preventDefault();
     alert(`Se va a pagar con PayPal`);
@@ -54,9 +46,6 @@ const InvoicesPayMethod = ({ amountToPay, exchangeRate }) => {
           };
         });
         navigate("/payment"); // Go to <InvoicePayments /> from "./views/invoices/InvoicesPayments"
-        break;
-      case "stripe":
-        handlePagarStripe();
         break;
 
       default:
@@ -118,7 +107,6 @@ const InvoicesPayMethod = ({ amountToPay, exchangeRate }) => {
                 value="PayPal"
                 name="payment-method"
                 required
-                checked
                 onChange={(e) => setPaymentMethod(e.target.value)}
               />
               <label htmlFor="paypal">PayPal</label>
@@ -135,20 +123,6 @@ const InvoicesPayMethod = ({ amountToPay, exchangeRate }) => {
                 onChange={(e) => setPaymentMethod(e.target.value)}
               />
               <label htmlFor="transfer">Transferencia o Deposito </label>
-            </div>
-          </div>
-
-          <div>
-            <div className="radio-button">
-              <input
-                type="radio"
-                id="stripe"
-                value="stripe"
-                name="payment-method"
-                required
-                onChange={(e) => setPaymentMethod(e.target.value)}
-              />
-              <label htmlFor="stripe">Stripe</label>
             </div>
           </div>
 

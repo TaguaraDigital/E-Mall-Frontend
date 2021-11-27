@@ -1,16 +1,17 @@
 import Footer from "../../components/layout/Footer";
 import Header from "../../components/layout/Header";
 import ClientTable from "../../components/UpdateClient/ClientTable";
+import ContactSection from "../../components/layout/ContactSection";
 
-const ClientUpdate = () => {
+const ClientAdmin = () => {
   return (
     <>
-      <Header page="home" />
-
+      <Header page="homeAdmin" />
       <ClientTable />
-      <Footer id="footer" />
+      <ContactSection />
+      <Footer />
     </>
   );
 };
 
-export default ClientUpdate;
+export default ClientAdmin;

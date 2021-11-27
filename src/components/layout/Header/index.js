@@ -72,6 +72,13 @@ const Header = ({ page = "landing" }) => {
                   Inicio
                 </NavLinkR>
               </NavLinks>
+
+              <NavLinks>
+                <NavLinkR to="/invoice" onClick={handleShowToggleMenu}>
+                  Recibos X Confirmar
+                </NavLinkR>
+              </NavLinks>
+
               <NavLinks>
                 <NavLink to="contact" onClick={handleShowToggleMenu}>
                   Contacto
