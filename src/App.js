@@ -16,7 +16,7 @@ import InvoiceAdmin from "./views/invoices/InvoiceAdmin";
 import Client from "./views/Clients/";
 import ClientAdmin from "./views/Clients/ClientAdmin";
 import Dashboard from "./views/Dashboard";
-import InvoicePayments from "./views/invoices/InvoicesPayments";
+import Payments from "./views/Payments";
 import PaymentSuccess from "./components/invoices/PaymentSuccess";
 import PaymentCancel from "./components/invoices/PaymentCancel";
 const App = () => {
@@ -124,7 +124,15 @@ const App = () => {
         />
         <Route
           path="/payment"
-          element={!isAuthenticated ? <Landing /> : <InvoicePayments />}
+          element={
+            !isAuthenticated ? (
+              <Landing />
+            ) : currentUser.user_role === "AD" ? (
+              <ClientAdmin />
+            ) : (
+              <Payments />
+            )
+          }
         />
         <Route path="/success" component={PaymentSuccess} exact></Route>
         <Route path="/cancel" component={PaymentCancel} exact></Route>

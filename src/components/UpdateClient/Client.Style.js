@@ -142,6 +142,12 @@ export const FormField = styled.div`
   width: 100%;
   position: relative;
   padding: 0 1rem;
+
+  label,
+  input {
+    margin-top: 0;
+    padding: 0;
+  }
 `;
 
 export const RowBottons = styled.div`

@@ -23,7 +23,12 @@ const ClientUpdate = () => {
   const fetchData = async () => {
     try {
       const response = await ClientFinder.byId(currentUser.client_code);
-      setClient(response.data[0]);
+
+      setClient({
+        ...response.data[0],
+        client_date: response.data[0].client_date.split("T")[0],
+        client_date_birth: response.data[0].client_date_birth.split("T")[0],
+      });
     } catch (err) {
       console.log(err);
     }
@@ -31,10 +36,9 @@ const ClientUpdate = () => {
 
   const updateData = async (valores) => {
     try {
-      console.log("valores =", valores);
       const response = await ClientFinder.update(currentUser.user_id, valores);
       if (response.message === "ok") {
-        alert("Actualizacion exitosa");
+        navigate("/invoice");
       } else {
         console.log("error en la actualizacion ", response);
       }
@@ -54,6 +58,7 @@ const ClientUpdate = () => {
     client_CI: "",
     client_type: "",
     client_date_birth: "",
+    client_date: "",
     client_gender: "",
     client_phone1: "",
     client_phone2: "",
@@ -110,7 +115,7 @@ const ClientUpdate = () => {
                   />
                 </FormField>
 
-                <FormField className="long-txt">
+                <FormField>
                   <label className="form__label">Nombre </label>
                   <Field name="client_name" />
                   <ErrorMessage
@@ -123,11 +128,22 @@ const ClientUpdate = () => {
 
                 <FormField>
                   <label className="form__label">Fecha Nacimiennto</label>
-                  <Field name="client_date_birth" />
+                  <Field name="client_date_birth" type="date" />
                   <ErrorMessage
                     name="client_date_birth"
                     component={() => (
                       <div className="error">{errors.client_date_birth}</div>
+                    )}
+                  />
+                </FormField>
+
+                <FormField>
+                  <label className="form__label">Fecha</label>
+                  <Field name="client_date" type="date" />
+                  <ErrorMessage
+                    name="client_date"
+                    component={() => (
+                      <div className="error">{errors.client_date}</div>
                     )}
                   />
                 </FormField>
@@ -269,7 +285,7 @@ const ClientUpdate = () => {
 
               <RowBottons>
                 <button type="submit">Actualizar</button>
-                <button onClick={() => navigate(-1)}>Cancelar</button>
+                <button onClick={() => navigate(0)}>Cancelar</button>
               </RowBottons>
             </Form>
           )}

@@ -10,10 +10,10 @@ export const GlobalStyle = createGlobalStyle`
     --lightClr: #EDEBE8;
     --darkClr: #5e6072;
     --ctaInvClr: #5210ac;
-    --ctaClr: #f86449;
+    --ctaClr: #EB6909;
 
     --saintBlue: #001489;
-    --saintOrange: #FF6900;
+    --saintOrange: #EB6909; 
     --saintGreen: #97CA40;
     --saintPurple: #462E83;
 

@@ -32,6 +32,7 @@ const InvoiceToConfirm = () => {
         <thead>
           <tr>
             <th> Numero </th>
+            <th> Socio </th>
             <th> Factura </th>
             <th> Fecha </th>
             <th> Referencia </th>
@@ -47,6 +48,7 @@ const InvoiceToConfirm = () => {
               return (
                 <tr key={invoice.invoice_id}>
                   <td data-col-title="Numero"> {i + 1} </td>
+                  <td data-col-title="Socio"> {invoice.client_code} </td>
                   <td data-col-title="Factura"> {invoice.invoice_id} </td>
                   <td data-col-title="Fecha">
                     {FormatDate(invoice.payment_date)}

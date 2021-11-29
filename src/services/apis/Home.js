@@ -1,6 +1,6 @@
 const HomeFinder = {};
 // const URL = "http://localhost:3500/dashboard/";
-const URL = "https://e-mall-backend.vercel.app/dashboard/";
+const URL = process.env.REACT_APP_URL_SERVER + "dashboard/";
 
 HomeFinder.home = async (user) => {
   const response = await fetch(URL, {

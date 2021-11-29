@@ -1,6 +1,6 @@
 const InvoicesFinder = {};
 // const URL = "http://localhost:3500/invoices/";
-const URL = "https://e-mall-backend.vercel.app/invoices/";
+const URL = process.env.REACT_APP_URL_SERVER + "invoices/";
 
 // find all invoice to confirm invoice_status = 1
 InvoicesFinder.toConfirm = async () => {

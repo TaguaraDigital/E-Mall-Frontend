@@ -1,5 +1,5 @@
 const ClientFinder = {};
-const URL = "https://e-mall-backend.vercel.app/client/";
+const URL = process.env.REACT_APP_URL_SERVER + "client/";
 // const URL = "http://localhost:3500/client/";
 
 ClientFinder.byId = async (user_id) => {

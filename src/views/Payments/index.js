@@ -15,7 +15,8 @@ import { AuthContext } from "../../hooks/contexts/AuthContext";
 import Header from "../../components/layout/Header";
 import ContactSection from "../../components/layout/ContactSection";
 import Footer from "../../components/layout/Footer";
-import DepositPayment from "../../components/DepositPayment";
+import DepositPayment from "../../components/Payments/DepositPayment";
+import ZellePayment from "../../components/Payments/ZellePayments";
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_CLIENT_ID);
 
@@ -83,6 +84,13 @@ const Payments = () => {
         {currentUser.paymentMethod === "transfer" ? (
           <>
             <DepositPayment
+              invoicesToPay={invoicesToPay}
+              amount={currentUser.payment_amount_USD}
+            />
+          </>
+        ) : currentUser.paymentMethod === "zelle" ? (
+          <>
+            <ZellePayment
               invoicesToPay={invoicesToPay}
               amount={currentUser.payment_amount_USD}
             />

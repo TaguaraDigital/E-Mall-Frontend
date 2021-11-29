@@ -45,7 +45,19 @@ const InvoicesPayMethod = ({ amountToPay, exchangeRate }) => {
             payment_amount_Bs: totalToPay * exchangeRate,
           };
         });
-        navigate("/payment"); // Go to <InvoicePayments /> from "./views/invoices/InvoicesPayments"
+        navigate("/payment"); // Go to <Payments /> from "./views/Payment/"
+        break;
+
+      case "zelle":
+        setCurrentUser((user) => {
+          return {
+            ...user,
+            paymentMethod,
+            payment_amount_USD: totalToPay,
+            payment_amount_Bs: totalToPay * exchangeRate,
+          };
+        });
+        navigate("/payment"); // Go to <Payments /> from "./views/Payment/"
         break;
 
       default:
