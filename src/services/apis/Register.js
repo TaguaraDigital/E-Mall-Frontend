@@ -1,6 +1,5 @@
 const RegisterFinder = {};
-// const URL = "http://localhost:3500/auth/";
-const URL = process.env.REACT_APP_URL_SERVER + "auth/";
+const URL = `${process.env.REACT_APP_URL_SERVER}auth/`;
 
 RegisterFinder.signup = async (user) => {
   const response = await fetch(URL + "register", {
