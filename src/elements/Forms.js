@@ -104,7 +104,7 @@ export const ContenedorCenterButton = styled.div`
 
 export const Button = styled.button`
   width: 30%;
-  background-color: var(--mainClr);
+  background-color: var(--saintBlue);
   color: var(--lightClr);
   cursor: pointer;
   transition: 0.3s ease all;

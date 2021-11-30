@@ -126,19 +126,19 @@ export const Input = styled.input`
 
   &:focus {
     outline: none;
-    border-bottom: 2px solid var(--mainClr);
+    border-bottom: 2px solid var(--saintBlue);
   }
 `;
 
 export const MuteLink = styled.p`
   font-size: 0.7rem;
-  color: var(--mainClr);
+  color: var(--saintBlue);
   text-decoration: none;
 `;
 
 export const BoldLink = styled(Link)`
   font-size: 0.85rem;
-  color: var(--mainClr);
+  color: var(--saintBlue);
   text-decoration: none;
   cursor: pointer;
 
@@ -153,7 +153,7 @@ export const Button = styled.button`
   margin: 1rem 0;
 
   padding: 0.75rem 20%;
-  background-color: var(--mainClr);
+  background-color: var(--saintBlue);
   color: var(--lightClr);
 
   border: none;

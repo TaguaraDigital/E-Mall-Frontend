@@ -7,6 +7,26 @@ export const Arrow = styled(IoMdArrowRoundForward)`
   margin-left: 0.5rem;
 `;
 
+export const SocialMedia = styled.div`
+  z-index: 100;
+  margin-top: 2rem;
+`;
+
+export const SocialIconLink = styled.a`
+  display: inline-block;
+  color: var(--saintOrange);
+  font-size: clamp(0.5rem, 3vw, 2rem);
+  &:not(:last-child) {
+    margin-right: 2rem;
+  }
+
+  &:hover {
+    color: var(--ctaClr);
+    transform: scale(1.3);
+    transition: all 0.5s ease;
+  }
+`;
+
 export const Here = styled(FaMapMarkerAlt)`
   width: 25px;
   height: 25px;
@@ -16,7 +36,7 @@ export const Here = styled(FaMapMarkerAlt)`
 const arrowButtons = css`
   width: 30px;
   height: 30px;
-  color: var(--mainClr);
+  color: var(--saintBlue);
   cursor: pointer;
   background-color: var(--darkClr);
   border-radius: 50%;
@@ -64,15 +84,15 @@ export const HeroSlide = styled.div`
 
 export const HeroInfo = styled.div`
   position: absolute;
-  width: 70%;
-  background-color: rgba(0, 0, 0, 0.3);
-  color: var(--lightClr);
-  font-size: 2rem;
-  text-align: center;
-  padding: 1rem;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: 40%;
+  color: var(--darkClr);
+  font-size: clamp(0.5rem, 3vw, 2rem);
+  line-height: 1.1;
+  text-align: ${(props) => (props.side === "right" ? "right" : "left")};
+  top: 30%;
+  ${(props) => (props.side === "right" ? "right: 30px;" : "left: 30px;")};
+
+  /* transform: translate(-50%, -50%); */
 `;
 
 export const HeroImage = styled.img`

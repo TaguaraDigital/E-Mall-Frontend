@@ -20,8 +20,10 @@ const ContactSection = ({
         <ContactTitle className={classes}> {title} </ContactTitle>
         <ContactAddress data={contactData[0]} />
         <br />
-        <hr width="200px" />
-        <hr width="200px" />
+        <br />
+        <hr width="300px" />
+        <hr width="300px" />
+        <br />
         <br />
         <ContactAddress data={contactData[1]} />
       </ContactContent>

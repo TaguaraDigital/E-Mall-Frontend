@@ -109,8 +109,9 @@ export const SocialIcons = styled.div`
 `;
 
 export const SocialIconLink = styled.a`
-  color: var(--lightClr);
-  font-size: 24px;
+  color: var(--saintOrange);
+  font-size: 36px;
+  margin-right: 2rem;
 
   &:hover {
     color: var(--ctaClr);

@@ -10,9 +10,7 @@ const Invoice = () => {
   return (
     <>
       <Header page="home" />
-      <h1 className="tittle-center">
-        Deuda de usuario {currentUser.user_name}
-      </h1>
+      <h1 className="title-center">Deuda de usuario {currentUser.user_name}</h1>
       <InvoicesPendingCollection />
       <ContactSection />
       <Footer />

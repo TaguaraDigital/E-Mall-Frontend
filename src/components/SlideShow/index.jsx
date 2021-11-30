@@ -1,14 +1,17 @@
 import { useEffect, useRef } from "react";
+import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 
 import {
   HeroImage,
-  // HeroInfo,
+  HeroInfo,
   HeroSection,
   HeroSlide,
   HeroSlider,
   Next,
   Prev,
   SlideButtons,
+  SocialMedia,
+  SocialIconLink,
 } from "../layout/Hero/HeroStyles";
 
 const SlideShow = ({ slides, id }) => {
@@ -78,9 +81,35 @@ const SlideShow = ({ slides, id }) => {
               <div>
                 <HeroImage src={slide.image} alt={slide.alt} />
               </div>
-              {/* <HeroInfo>
-                <p>Contenido Slider</p>
-              </HeroInfo> */}
+              <HeroInfo side={slide.side}>
+                <p>{slide.title}</p>
+                {i > 0 && (
+                  <SocialMedia side={slide.side}>
+                    <SocialIconLink
+                      href="https://www.facebook.com/SaintdeVenezuela/"
+                      target="_blank"
+                      aria-label="Facebook"
+                    >
+                      <FaFacebook />
+                    </SocialIconLink>
+                    <SocialIconLink
+                      href="https://twitter.com/saintve"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                      aria-label="Twitter"
+                    >
+                      <FaTwitter />
+                    </SocialIconLink>
+                    <SocialIconLink
+                      href="https://www.instagram.com/saintve/"
+                      target="_blank"
+                      aria-label="Instagram"
+                    >
+                      <FaInstagram />
+                    </SocialIconLink>{" "}
+                  </SocialMedia>
+                )}
+              </HeroInfo>
             </HeroSlide>
           );
         })}

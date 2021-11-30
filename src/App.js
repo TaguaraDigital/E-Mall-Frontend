@@ -3,9 +3,6 @@ import { useEffect, useContext } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import { AuthContext } from "./hooks/contexts/AuthContext";
-
-import "./App.css";
-
 import Landing from "./views/Landing";
 import Login from "./views/Access/Login";
 import Register from "./views/Access/Register";

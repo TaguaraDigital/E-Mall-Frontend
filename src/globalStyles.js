@@ -1,11 +1,8 @@
-/* https://paletasdecolores.com/paleta-de-colores-2279/ */
-
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
   :root {
     /* Colors */
-    --mainClr: #007BFF;
     --altClr: #1544c0;
     --lightClr: #EDEBE8;
     --darkClr: #5e6072;
@@ -17,19 +14,12 @@ export const GlobalStyle = createGlobalStyle`
     --saintGreen: #97CA40;
     --saintPurple: #462E83;
 
-    --greenClr: #78be20;
-    --lightBlueClr: #00bfb3;
-    --yellowClr: #fbe10f;
-    --blueClr: #1544c0;
-    --purpleClr: #5210ac;
-    --orangeClr: #f86449;
-
 
     /* other variables  */
     --header-height: 80px;
   }
 
-  * {
+  *, *::before, *::after {
     box-sizing: border-box;
     margin:0;
     padding: 0;
@@ -42,37 +32,37 @@ export const GlobalStyle = createGlobalStyle`
   body {
     background-color: var(--lightClr);
     color: var(--darkclr);
-    font-family: 'Encode Sans Expanded', sans-serif;
+    font-family: Tahoma,  sans-serif;
     font-size: 16px;
-    line-height: 1.5;
+    line-height: 1.2;
   }
 
-  .tittle-center{
+  .title-center{
     text-align: center;
   }
 
-  .title {
+  /* .title {
     position: relative;
       margin-bottom: 2rem;
 
     font-family: 'Bad Script', cursive;
     font-size: 2rem;
     
-    color: var(--blueClr);
+    color: var(--saintBlue);
     text-align: center;
 
     &:after {
       content: '';
       height:3px;
       width: 5rem;
-      background-color: var(--blueClr);
+      background-color: var(--saintBlue);
 
       position: absolute;
       bottom: 0;
       left: 50%;
       transform: translate(-50%);
     }
-  }
+  } */
 
   .error {
     color: var(--ctaClr);
@@ -127,9 +117,9 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   @media screen and (max-width: 639px) {
-    .title {
+    /* .title {
         text-align: left;
-    }
+    } */
     .smart-table .first-cell,
     .smart-table thead {
         display: none;
@@ -162,9 +152,9 @@ export const GlobalStyle = createGlobalStyle`
 }
 
 @media screen and (min-width: 1024px) {
-    .title {
+    /* .title {
         text-align: center;
-    }
+    } */
     table {
         width: 80%;
     }

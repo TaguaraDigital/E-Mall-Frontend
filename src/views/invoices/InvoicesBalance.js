@@ -11,7 +11,7 @@ const Invoice = () => {
   return (
     <>
       <Header page="home" />
-      <h1 className="tittle-center">
+      <h1 className="title-center">
         Estado de cuenta del usuario {currentUser.user_name}
       </h1>
       <InvoicesAll />
